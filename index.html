@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <title>Test Application</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">  </script>
+    <script>
+      $(document).ready(function(){
+        let string_to_cut;
+        $("#submit").click(function(){
+          string_to_cut=$("#string_to_cut").val();
+          $.post(
+    "http://localhost:3333/test",
+    {string_to_cut: string_to_cut},
+    function(data){
+        var response = jQuery.parseJSON(data);
+        alert(response.return_string)
+    }
+    
+);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>String to cut: every 3rd character!</h1>
+    <input type="TEXT" id="string_to_cut" size="40"><br>
+    <input type="button" id="submit" value="Submit">
+  </body>
+</html>
